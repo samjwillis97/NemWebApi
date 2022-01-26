@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
-import {getAllUnits, UnitFilter} from "../../models/units";
+import {getAllUnits} from "../../models/units";
 
 const route = Router();
 

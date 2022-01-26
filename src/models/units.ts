@@ -1,50 +1,6 @@
 import db from "../loaders/sqlite";
 
-interface Unit {
-  id: number | null
-  duid: string
-  station_name: string
-  region_id: string
-  fuel_source: string
-  technology_type: string
-  max_capacity: number
-}
-
 const UnitKeys: string[] = ['id', 'duid', 'station_name', 'region_id', 'fuel_source', 'technology_type', 'max_capacity']
-
-export interface UnitFilter {
-  duid?: StringEqFilter | StringLikeFilter
-  station_name?: StringEqFilter | StringLikeFilter
-  region_id?: StringEqFilter | StringLikeFilter
-  fuel_source?: StringEqFilter | StringLikeFilter
-  technology_type?: StringEqFilter | StringLikeFilter
-  max_capacity?: NumberCompFilter | NumberEqFilter
-}
-
-interface StringLikeFilter {
-  like: string
-}
-
-interface StringEqFilter {
-  eq: string
-}
-
-interface NumberCompFilter {
-  gr?: number
-  le?: number
-}
-
-interface NumberEqFilter {
-  eq: number
-}
-
-type UnitArrayCallback = (err: any, row: any) => void
-
-type IsNever<T> = [T] extends [never] ? true : false
-
-type IsAValue<Obj, Str extends string> = IsNever<{
-  [Prop in keyof Obj]: Str extends Obj[Prop] ? Str : never
-}[keyof Obj]> extends false ? true : false
 
 export const getAllUnits = (
   callback: UnitArrayCallback,
